@@ -1,0 +1,31 @@
+{
+  "name": "desafio-backend-modulo-03-sistema-dindin-b2b-ifood-t07",
+  "version": "1.0.0",
+  "description": "Esse projeto foi desenvolvido em dupla para cumprir o desafio do módulo 3 do curso da Cubos Academy",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "npm",
+    "banco",
+    "de",
+    "dados",
+    "autenticação"
+  ],
+  "author": "Juan Da Mata e Igor Santos",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
