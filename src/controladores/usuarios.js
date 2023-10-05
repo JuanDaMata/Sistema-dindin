@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const pool = require('../bancodedados/conexao');
-const jwt = require('jsonwebtoken');
-const chaveSecreta = require('../chaveSecreta');
+
 
 const cadastrarUsuario = async (req, res) => {
     const { nome, email, senha } = req.body;
@@ -35,9 +34,6 @@ const cadastrarUsuario = async (req, res) => {
     }
 };
 
-
-const fazerLogin = () => { };
-
 const detalharUsuario = () => { };
 
 const atualizarUsuario = () => { };
@@ -46,7 +42,6 @@ const listarCategoriasCadastradas = () => { };
 
 module.exports = {
     cadastrarUsuario,
-    fazerLogin,
     detalharUsuario,
     atualizarUsuario,
     listarCategoriasCadastradas
