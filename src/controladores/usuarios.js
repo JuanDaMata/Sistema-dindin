@@ -34,7 +34,13 @@ const cadastrarUsuario = async (req, res) => {
     }
 };
 
-const detalharUsuario = () => { };
+const detalharUsuario = async (req, res) => {
+    const usuario = req.usuario;
+
+    const { senha, ...usuarioDetalhado } = usuario.rows[0];
+
+    return res.status(200).json(usuarioDetalhado);
+};
 
 const atualizarUsuario = () => { };
 
