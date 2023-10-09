@@ -3,6 +3,7 @@ const transacoes = require('./controladores/transacoes');
 const usuarios = require('./controladores/usuarios');
 const verificarAutenticacao = require('./intermediarios/autenticacao');
 const fazerLogin = require('./controladores/login');
+const listarCategoriasCadastradas = require('./controladores/categoria')
 
 const rotas = Router();
 
@@ -13,7 +14,7 @@ rotas.use(verificarAutenticacao);
 
 rotas.get('/usuario', usuarios.detalharUsuario);
 rotas.put('/usuario', usuarios.atualizarUsuario);
-rotas.get('/categoria', usuarios.listarCategoriasCadastradas);
+rotas.get('/categoria', listarCategoriasCadastradas);
 rotas.get('/transacao', transacoes.ListarTransacoesUsuarioLogado);
 rotas.get('/transacao/:id', transacoes.detalharUmaTransacaoUsuarioLogado);
 rotas.post('/transacao', transacoes.cadastrarTransacaoUsuarioLogado);

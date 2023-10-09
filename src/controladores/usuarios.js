@@ -34,15 +34,49 @@ const cadastrarUsuario = async (req, res) => {
     }
 };
 
-const detalharUsuario = () => { };
+const detalharUsuario = async (req, res) => {
+    const usuario = req.usuario;
 
-const atualizarUsuario = () => { };
+    const { senha, ...usuarioDetalhado } = usuario.rows[0];
 
-const listarCategoriasCadastradas = () => { };
+    return res.status(200).json(usuarioDetalhado);
+};
+
+const atualizarUsuario = async (req, res) => {
+
+    const usuario = req.usuario;
+    const { id } = usuario.rows[0];
+
+    const { nome, email, senha } = req.body;
+
+    if (!nome || !email || !senha) {
+        return res.status(400).json({ mensagem: "Os campos nome, email e senha são obrigatórios!" });
+    }
+
+    try {
+        const existeEmail = await pool.query(
+            'SELECT * FROM usuarios WHERE email = $1', [email]
+        );
+        if (existeEmail.rowCount > 0) {
+            return res.status(200).json({
+                Mensagem: "Este email já está cadastrado em outro usuário. Por favor, cadastre outro email.",
+            });
+        }
+        const senhaCriptografada = await bcrypt.hash(senha, 10);
+
+        const usuarioAtualizado = await pool.query(
+            "update usuarios set nome = $1, email = $2, senha = $3 where id = $4 returning *;",
+            [nome, email, senhaCriptografada, id]
+        );
+
+        return res.status(200).json(usuarioAtualizado);
+    } catch (error) {
+        return res.status(500).json({ Mensagem: "Erro ao atualizar dados do usuário." });
+    }
+};
 
 module.exports = {
     cadastrarUsuario,
     detalharUsuario,
     atualizarUsuario,
-    listarCategoriasCadastradas
 }
