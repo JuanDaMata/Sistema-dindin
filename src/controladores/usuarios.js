@@ -75,11 +75,8 @@ const atualizarUsuario = async (req, res) => {
     }
 };
 
-const listarCategoriasCadastradas = () => { };
-
 module.exports = {
     cadastrarUsuario,
     detalharUsuario,
     atualizarUsuario,
-    listarCategoriasCadastradas
 }
