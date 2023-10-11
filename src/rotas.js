@@ -16,10 +16,10 @@ rotas.get('/usuario', usuarios.detalharUsuario);
 rotas.put('/usuario', usuarios.atualizarUsuario);
 rotas.get('/categoria', listarCategoriasCadastradas);
 rotas.get('/transacao', transacoes.ListarTransacoesUsuarioLogado);
+rotas.get('/transacao/extrato', transacoes.obterExtratoDasTransacoes);
 rotas.get('/transacao/:id', transacoes.detalharUmaTransacaoUsuarioLogado);
 rotas.post('/transacao', transacoes.cadastrarTransacaoUsuarioLogado);
 rotas.put('/transacao/:id', transacoes.atualizarTransacaoUsuarioLogado);
 rotas.delete('/transacao/:id', transacoes.excluirTransacaoUsuarioLogado);
-rotas.get('/transacao/extrato', transacoes.obterExtratoDasTransacoes);
 
 module.exports = rotas

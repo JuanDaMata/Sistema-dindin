@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const pool = require('../bancodedados/conexao');
 
-
 const cadastrarUsuario = async (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -69,7 +68,7 @@ const atualizarUsuario = async (req, res) => {
             [nome, email, senhaCriptografada, id]
         );
 
-        return res.status(200).json(usuarioAtualizado);
+        return res.status(200).json(usuarioAtualizado.rows[0]);
     } catch (error) {
         return res.status(500).json({ Mensagem: "Erro ao atualizar dados do usuário." });
     }
