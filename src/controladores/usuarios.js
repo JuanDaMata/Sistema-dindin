@@ -54,7 +54,7 @@ const atualizarUsuario = async (req, res) => {
 
     try {
         const existeEmail = await pool.query(
-            'SELECT * FROM usuarios WHERE email = $1', [email]
+            'SELECT * FROM usuarios WHERE email = $1 and id != $2', [email, id]
         );
         if (existeEmail.rowCount > 0) {
             return res.status(200).json({
@@ -68,7 +68,7 @@ const atualizarUsuario = async (req, res) => {
             [nome, email, senhaCriptografada, id]
         );
 
-        return res.status(200).json(usuarioAtualizado.rows[0]);
+        return res.status(204).json();
     } catch (error) {
         return res.status(500).json({ Mensagem: "Erro ao atualizar dados do usuário." });
     }
